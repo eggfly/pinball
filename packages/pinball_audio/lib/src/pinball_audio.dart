@@ -100,7 +100,7 @@ class _SimplePlayAudio extends _Audio {
 
   @override
   void play() {
-    playSingleAudio(prefixFile(path), volume: volume ?? 1);
+    // playSingleAudio(prefixFile(path), volume: volume ?? 1);
   }
 }
 
@@ -376,6 +376,7 @@ class PinballAudioPlayer {
 
   /// Plays the received audio.
   void play(PinballAudio audio) {
+    return;
     assert(
       audios.containsKey(audio),
       'Tried to play unregistered audio $audio',

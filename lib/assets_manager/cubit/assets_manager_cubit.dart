@@ -22,7 +22,7 @@ class AssetsManagerCubit extends Cubit<AssetsManagerState> {
     final loadables = <Future<void> Function()>[
       _game.preFetchLeaderboard,
       ..._game.preLoadAssets(),
-      ..._audioPlayer.load(),
+      // ..._audioPlayer.load(),
       ...BonusAnimation.loadAssets(),
       ...SelectedCharacter.loadAssets(),
     ];
