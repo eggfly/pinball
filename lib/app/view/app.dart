@@ -15,8 +15,8 @@ import 'package:share_repository/share_repository.dart';
 class App extends StatelessWidget {
   const App({
     Key? key,
-    required AuthenticationRepository authenticationRepository,
-    required LeaderboardRepository leaderboardRepository,
+    required AuthenticationRepository? authenticationRepository,
+    required LeaderboardRepository? leaderboardRepository,
     required ShareRepository shareRepository,
     required PinballAudioPlayer pinballAudioPlayer,
     required PlatformHelper platformHelper,
@@ -27,8 +27,8 @@ class App extends StatelessWidget {
         _platformHelper = platformHelper,
         super(key: key);
 
-  final AuthenticationRepository _authenticationRepository;
-  final LeaderboardRepository _leaderboardRepository;
+  final AuthenticationRepository? _authenticationRepository;
+  final LeaderboardRepository? _leaderboardRepository;
   final ShareRepository _shareRepository;
   final PinballAudioPlayer _pinballAudioPlayer;
   final PlatformHelper _platformHelper;
@@ -37,8 +37,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider.value(value: _authenticationRepository),
-        RepositoryProvider.value(value: _leaderboardRepository),
+        // RepositoryProvider.value(value: _authenticationRepository),
+        // RepositoryProvider.value(value: _leaderboardRepository),
         RepositoryProvider.value(value: _shareRepository),
         RepositoryProvider.value(value: _pinballAudioPlayer),
         RepositoryProvider.value(value: _platformHelper),

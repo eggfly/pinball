@@ -56,7 +56,7 @@ class PinballGame extends PinballForge2DGame
 
   final PinballAudioPlayer _audioPlayer;
 
-  final LeaderboardRepository leaderboardRepository;
+  final LeaderboardRepository? leaderboardRepository;
 
   final ShareRepository shareRepository;
 
@@ -70,7 +70,7 @@ class PinballGame extends PinballForge2DGame
 
   Future<void> preFetchLeaderboard() async {
     try {
-      _entries = await leaderboardRepository.fetchTop10Leaderboard();
+      _entries = null;
     } catch (_) {
       // An initial null leaderboard means that we couldn't fetch
       // the entries for the [Backbox] and it will show the relevant display.
@@ -94,7 +94,7 @@ class PinballGame extends PinballForge2DGame
           MultiFlameProvider(
             providers: [
               FlameProvider<PinballAudioPlayer>.value(_audioPlayer),
-              FlameProvider<LeaderboardRepository>.value(leaderboardRepository),
+              // FlameProvider<LeaderboardRepository>.value(leaderboardRepository),
               FlameProvider<ShareRepository>.value(shareRepository),
               FlameProvider<AppLocalizations>.value(_l10n),
               FlameProvider<PlatformHelper>.value(platformHelper),
@@ -216,7 +216,7 @@ class PinballGame extends PinballForge2DGame
 class DebugPinballGame extends PinballGame with FPSCounter, PanDetector {
   DebugPinballGame({
     required CharacterThemeCubit characterThemeBloc,
-    required LeaderboardRepository leaderboardRepository,
+    required LeaderboardRepository? leaderboardRepository,
     required ShareRepository shareRepository,
     required AppLocalizations l10n,
     required PinballAudioPlayer audioPlayer,

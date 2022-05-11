@@ -20,11 +20,11 @@ import 'package:share_repository/share_repository.dart';
 class Backbox extends PositionComponent with ZIndex, HasGameRef {
   /// {@macro backbox}
   Backbox({
-    required LeaderboardRepository leaderboardRepository,
+    required LeaderboardRepository? leaderboardRepository,
     required ShareRepository shareRepository,
     required List<LeaderboardEntryData>? entries,
   })  : _bloc = BackboxBloc(
-          leaderboardRepository: leaderboardRepository,
+          leaderboardRepository: null,
           initialEntries: entries,
         ),
         _shareRepository = shareRepository;

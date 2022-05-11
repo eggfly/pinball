@@ -26,7 +26,6 @@ class PinballGamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final characterThemeBloc = context.read<CharacterThemeCubit>();
     final audioPlayer = context.read<PinballAudioPlayer>();
-    final leaderboardRepository = context.read<LeaderboardRepository>();
     final shareRepository = context.read<ShareRepository>();
     final platformHelper = context.read<PlatformHelper>();
     final gameBloc = context.read<GameBloc>();
@@ -34,7 +33,7 @@ class PinballGamePage extends StatelessWidget {
         ? DebugPinballGame(
             characterThemeBloc: characterThemeBloc,
             audioPlayer: audioPlayer,
-            leaderboardRepository: leaderboardRepository,
+            leaderboardRepository: null,
             shareRepository: shareRepository,
             l10n: context.l10n,
             platformHelper: platformHelper,
@@ -43,7 +42,7 @@ class PinballGamePage extends StatelessWidget {
         : PinballGame(
             characterThemeBloc: characterThemeBloc,
             audioPlayer: audioPlayer,
-            leaderboardRepository: leaderboardRepository,
+            leaderboardRepository: null,
             shareRepository: shareRepository,
             l10n: context.l10n,
             platformHelper: platformHelper,

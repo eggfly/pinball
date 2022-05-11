@@ -13,7 +13,7 @@ part 'backbox_state.dart';
 class BackboxBloc extends Bloc<BackboxEvent, BackboxState> {
   /// {@macro backbox_bloc}
   BackboxBloc({
-    required LeaderboardRepository leaderboardRepository,
+    required LeaderboardRepository? leaderboardRepository,
     required List<LeaderboardEntryData>? initialEntries,
   })  : _leaderboardRepository = leaderboardRepository,
         super(
@@ -27,7 +27,7 @@ class BackboxBloc extends Bloc<BackboxEvent, BackboxState> {
     on<LeaderboardRequested>(_onLeaderboardRequested);
   }
 
-  final LeaderboardRepository _leaderboardRepository;
+  final LeaderboardRepository? _leaderboardRepository;
 
   void _onPlayerInitialsRequested(
     PlayerInitialsRequested event,
@@ -47,13 +47,13 @@ class BackboxBloc extends Bloc<BackboxEvent, BackboxState> {
   ) async {
     try {
       emit(LoadingState());
-      await _leaderboardRepository.addLeaderboardEntry(
-        LeaderboardEntryData(
-          playerInitials: event.initials,
-          score: event.score,
-          character: event.character.toType,
-        ),
-      );
+      // await _leaderboardRepository.addLeaderboardEntry(
+      //   LeaderboardEntryData(
+      //     playerInitials: event.initials,
+      //     score: event.score,
+      //     character: event.character.toType,
+      //   ),
+      // );
       emit(
         InitialsSuccessState(
           score: event.score,
@@ -86,7 +86,7 @@ class BackboxBloc extends Bloc<BackboxEvent, BackboxState> {
     try {
       emit(LoadingState());
 
-      final entries = await _leaderboardRepository.fetchTop10Leaderboard();
+      final entries = <LeaderboardEntryData>[];
 
       emit(LeaderboardSuccessState(entries: entries));
     } catch (error, stackTrace) {
